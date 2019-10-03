@@ -1,6 +1,6 @@
 language: node_js
-sudo: true
-dist: trusty
+dist: xenial
+sudo: required
 
 before_script:
   - node script/create-test-tables.js pg://postgres@127.0.0.1:5432/postgres
@@ -17,6 +17,18 @@ env:
 
 matrix:
   include:
+    - node_js: "lts/boron"
+      addons:
+        postgresql: "10"
+    - node_js: "lts/argon"
+      addons:
+        postgresql: "10"
+    - node_js: "10"
+      addons:
+        postgresql: "10"
+    - node_js: "12"
+      addons:
+        postgresql: "10"
     - node_js: "lts/boron"
       addons:
         postgresql: "9.6"
